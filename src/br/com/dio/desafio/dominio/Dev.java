@@ -4,11 +4,16 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class Dev {
 	private String nome;
 	private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
 	private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+
+	public Dev(String nome) {
+		this.nome = nome;
+	}
 
 	public void inscreverBootcamp(Bootcamp bootcamp) {
 		this.conteudosInscritos.addAll(bootcamp.getConteudos());
@@ -58,6 +63,7 @@ public class Dev {
 
 	@Override
 	public boolean equals(Object o) {
+		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Dev dev = (Dev) o;
 		return Objects.equals(nome, dev.nome);
